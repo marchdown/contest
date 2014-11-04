@@ -4,12 +4,9 @@ def look_and_say(data='1', maxlen=5):
       maxlen: max sequence length
   '''
   res = []
-  cnt = 0
-  next = make_next_look_and_say_number(data)
-  while cnt<maxlen:
-  	cnt += 1
-  	res.append(next)
-  	next = make_next_look_and_say_number(next)
+  while len(data)<=maxlen:
+  	res.append(data)
+  	data = make_next_look_and_say_number(data)
   return res
       
 
