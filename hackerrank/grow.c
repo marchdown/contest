@@ -2,17 +2,14 @@
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
-int grow(int n)
-    {
+int grow(int n){
     int res = 1;
-    while (n>0){
-        res *= 2;
-        n--;
-        if (n == 0){
-            return res;
-        }
-        res++;
-        n--;
+    while (n>1){
+        res = res*2+1;
+        n -= 2;
+    }
+    if (n == 1) {
+        res *= 2;  
     }
     return res;
 }
