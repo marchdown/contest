@@ -5,11 +5,13 @@
   (map #(Double/parseDouble %) (clojure.string/split s #"\s")))
 
 (defn change-t [t] (dec t))
-(defn do-stuff [t] )
+(defn do-stuff [t] t)
 (defn should-stop? [t] (neg? (dec t)))
-(loop [t (Integer/parseInt (readline)] ;; t ← an int from STDIN
-       (when-not (should-stop? t)
-         (let [s (read-line)]
-           (do-stuff s))
-         (recur (change-t t)))
-))
+(defn -main [] 
+  (loop [t (Integer/parseInt (read-line))] ;; t ← an int from STDIN
+    (when-not (should-stop? t) ;; stop condition
+      (let [s (read-line)]  ;; read from STDIN and bind
+        (println (do-stuff s))) ;; process and print to STDOUT
+      (recur (change-t t))) ;; loopity-loop.
+    ))
+(-main)
