@@ -9,3 +9,4 @@
                   (clojure.string/split s #"")))))) 
       (recur (dec t)))))
 (-main)
+
