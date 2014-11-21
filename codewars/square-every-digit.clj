@@ -3,3 +3,17 @@
   (apply str 
     (map (fn [s] (let [x (bigdec s)] (* x x)))
          (clojure.string/split (str n) #""))))
+
+(fn [n]
+  (->> (clojure.string/split (str n) #"")
+   (map bigdec) 
+   (map #(* % %))
+   (apply str)))
+
+(fn [n]
+  (-> n
+   (str )
+   (clojure.string/split #"")
+   (#(map bigdec %) ) 
+   ((fn [n] (map #(* % %) n)))
+   (#(apply str %))))
