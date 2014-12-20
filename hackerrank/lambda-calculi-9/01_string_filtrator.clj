@@ -1,20 +1,12 @@
-;; leave only first occurences for each character in string
-(defn reduce-string [bs xs]
-  (cond (empty? xs)
-        [] 
+(defn reduce-string [bs [x & xs]]
+  "leave only the first occurence for each character in input string"
+  (cond (nil? x)         []
+        (contains? bs x) (reduce-string bs xs)
+        :else            (cons x
+                               (reduce-string
+                                (conj bs x) xs))))
 
-        (contains? bs (first xs))
-        (reduce-string
-         bs
-         (rest xs))
-
-        :else
-        (cons (first xs)
-              (reduce-string
-               (conj bs (first xs))
-               (rest xs)))))
-
-(defn -main [] ((comp println #(apply str %)) (reduce-string #{} (read-line))))
+(defn -main [] ((comp println #(apply str %) reduce-string) #{} (read-line)))
 
 (-main)
 
