@@ -4,7 +4,7 @@
     (map (fn [s] (let [x (bigdec s)] (* x x)))
          (clojure.string/split (str n) #""))))
 
-(fn [n]
+(defn square-every-digit [n]
   (->> (clojure.string/split (str n) #"")
    (map bigdec) 
    (map #(* % %))
@@ -17,3 +17,5 @@
    (#(map bigdec %) ) 
    ((fn [n] (map #(* % %) n)))
    (#(apply str %))))
+
+
