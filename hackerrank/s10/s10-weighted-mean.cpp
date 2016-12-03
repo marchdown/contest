@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <iomanip>
 
 using namespace std;
 
@@ -28,6 +29,6 @@ int main() {
   }
   weighted_mean = weighted_mean / sum_weights;
 
-  cout << weighted_mean;
+  cout << setprecision(1) << fixed << weighted_mean;
   return 0;
 }
