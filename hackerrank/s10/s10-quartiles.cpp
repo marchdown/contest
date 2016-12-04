@@ -18,7 +18,7 @@ int median(vector<int> ns) {
   if (k % 2 == 0) {
     median = (ns[(k / 2) - 1] + ns[k / 2]) / 2.0;
   } else {
-    median = ns[k / 2]; // rounding up
+    median = ns[k/2]; // rounding down, counting from zero
   }
   return median;
 }
@@ -39,13 +39,13 @@ int main() {
   q2 = median(xs);
   for (int i = 0; i < k / 2; i++) { // assume rounding down
     ls.push_back(xs[i]);
-    hs.push_back(xs[k / 2 + 1 + i]); // check for fencepost error here
+    hs.push_back(xs[(k / 2 + (k%2)) + i]); // check for fencepost error here
   }
   q1 = median(ls);
   q3 = median(hs);
 
   cout << q1 << endl << q2 << endl << q3;
-
+  
   // tuple<vector<int>,int,vector<int>> lower_upper_median(vector<int> xs) {
   //   sort(xs);
   //   vector<int> lower, upper;
